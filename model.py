@@ -68,7 +68,7 @@ class Button():
                     self.time_buffer.clear()
     
     # print the average time interval per blink of the button
-    def avgtime(self):
+    def observe(self):
         if(len(self.time_buffer) > 1):
             dif = np.diff(self.time_buffer)
             actual_f = 1000/np.mean(dif)

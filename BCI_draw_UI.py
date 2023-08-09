@@ -149,7 +149,7 @@ def main(path):
         for button in button_list:
             button.draw(screen)      
         canvas.draw(screen)
-        # button_back.avgtime()     # Uncomment to observe actual frequency of button
+        #button_back.observe()     # Uncomment to observe actual frequency of button
         pygame.display.update()
 
     print("Ended"+ " "*100)
