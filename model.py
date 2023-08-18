@@ -95,11 +95,11 @@ class Canvas():
     def reset(self):
         self.canvas.fill(self.color)
 
-    def save(self):
+    def save(self, path):
         current_time = datetime.now()
         time_string = current_time.strftime(f"%Y%m%d_%H%M%S")
-        name = "paint_"+time_string+".png"
-        pygame.image.save(self.canvas, name)
+        name = "drawing_"+time_string+".png"
+        pygame.image.save(self.canvas, path/'drawings'/name)
 
     def get_rect(self) -> pygame.Rect:
         return pygame.Rect(self.rect)

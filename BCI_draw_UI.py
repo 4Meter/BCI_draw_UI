@@ -99,21 +99,10 @@ def main(path):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.VIDEORESIZE:
-                print("The Pygame window is now " + str ( event.w ) + " pixels wide and " + str ( event.h ) + " pixels high")
-                WIDTH, HEIGHT = event.size
-                if WIDTH < min_width:
-                    WIDTH = min_width
-                if HEIGHT < min_height:
-                    HEIGHT = min_height
-                screen = pygame.display.set_mode((WIDTH,HEIGHT), HWSURFACE|DOUBLEBUF|RESIZABLE)
-                CANVAS_SIZE = (WIDTH-MARGIN1*2)/2, HEIGHT-MARGIN1*2
-                screen.fill(BACKGROUND_COLOR) 
-                canvas = pygame.transform.scale(canvas, CANVAS_SIZE)
             elif event.type == pygame.KEYDOWN:
                 # Save canvas when "S" is pressed
                 if event.key == pygame.K_s:
-                    canvas.save()
+                    canvas.save(path)
                 # Reset canvas when "R" is pressed
                 if event.key == pygame.K_r:
                     canvas.reset()
@@ -149,7 +138,7 @@ def main(path):
         for button in button_list:
             button.draw(screen)      
         canvas.draw(screen)
-        #button_back.observe()     # Uncomment to observe actual frequency of button
+        button_back.observe()     # Uncomment to observe actual frequency of button
         pygame.display.update()
 
     print("Ended"+ " "*100)
